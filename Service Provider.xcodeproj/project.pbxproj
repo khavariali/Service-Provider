@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		9F2D09301E0E140100345DEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2D092F1E0E140100345DEE /* AppDelegate.swift */; };
-		9F2D09321E0E140100345DEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2D09311E0E140100345DEE /* ViewController.swift */; };
+		9F2D09321E0E140100345DEE /* IntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2D09311E0E140100345DEE /* IntroVC.swift */; };
 		9F2D09351E0E140100345DEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F2D09331E0E140100345DEE /* Main.storyboard */; };
 		9F2D09371E0E140100345DEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F2D09361E0E140100345DEE /* Assets.xcassets */; };
 		9F2D093A1E0E140100345DEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F2D09381E0E140100345DEE /* LaunchScreen.storyboard */; };
 		9F2D09421E0E263800345DEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F2D09411E0E263800345DEE /* GoogleService-Info.plist */; };
+		9F2DF3181E0E58740020BB39 /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2DF3171E0E58740020BB39 /* FancyBtn.swift */; };
+		9F2DF3201E0EB6B90020BB39 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2DF31F1E0EB6B90020BB39 /* SignInVC.swift */; };
+		9FA4075E1E0E3DDF00892DE1 /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */; };
+		9FA407611E0E3E4400892DE1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA407601E0E3E4400892DE1 /* Constants.swift */; };
 		DAA39C4ABA94608614B74C9D /* Pods_Service_Provider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350E7580D42EFD29940C2475 /* Pods_Service_Provider.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,12 +24,16 @@
 		350E7580D42EFD29940C2475 /* Pods_Service_Provider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Service_Provider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2D092C1E0E140100345DEE /* Service Provider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Service Provider.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2D092F1E0E140100345DEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9F2D09311E0E140100345DEE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9F2D09311E0E140100345DEE /* IntroVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroVC.swift; sourceTree = "<group>"; };
 		9F2D09341E0E140100345DEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F2D09361E0E140100345DEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F2D09391E0E140100345DEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F2D093B1E0E140100345DEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F2D09411E0E263800345DEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9F2DF3171E0E58740020BB39 /* FancyBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyBtn.swift; sourceTree = "<group>"; };
+		9F2DF31F1E0EB6B90020BB39 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
+		9FA407601E0E3E4400892DE1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E9928A26768D9554263BE79B /* Pods-Service Provider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Service Provider.release.xcconfig"; path = "Pods/Target Support Files/Pods-Service Provider/Pods-Service Provider.release.xcconfig"; sourceTree = "<group>"; };
 		EB0833E457802541E2D5FBB4 /* Pods-Service Provider.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Service Provider.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Service Provider/Pods-Service Provider.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,8 +88,11 @@
 		9F2D092E1E0E140100345DEE /* Service Provider */ = {
 			isa = PBXGroup;
 			children = (
+				9FA4075A1E0E367900892DE1 /* Model */,
+				9FA407591E0E367200892DE1 /* View */,
+				9FA407581E0E366B00892DE1 /* Controller */,
+				9FA4075F1E0E3E3300892DE1 /* Utils */,
 				9F2D092F1E0E140100345DEE /* AppDelegate.swift */,
-				9F2D09311E0E140100345DEE /* ViewController.swift */,
 				9F2D09331E0E140100345DEE /* Main.storyboard */,
 				9F2D09361E0E140100345DEE /* Assets.xcassets */,
 				9F2D09381E0E140100345DEE /* LaunchScreen.storyboard */,
@@ -89,6 +100,39 @@
 				9F2D093B1E0E140100345DEE /* Info.plist */,
 			);
 			path = "Service Provider";
+			sourceTree = "<group>";
+		};
+		9FA407581E0E366B00892DE1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9F2D09311E0E140100345DEE /* IntroVC.swift */,
+				9F2DF31F1E0EB6B90020BB39 /* SignInVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		9FA407591E0E367200892DE1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */,
+				9F2DF3171E0E58740020BB39 /* FancyBtn.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		9FA4075A1E0E367900892DE1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9FA4075F1E0E3E3300892DE1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9FA407601E0E3E4400892DE1 /* Constants.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,8 +260,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F2D09321E0E140100345DEE /* ViewController.swift in Sources */,
+				9F2DF3181E0E58740020BB39 /* FancyBtn.swift in Sources */,
+				9F2D09321E0E140100345DEE /* IntroVC.swift in Sources */,
+				9F2DF3201E0EB6B90020BB39 /* SignInVC.swift in Sources */,
 				9F2D09301E0E140100345DEE /* AppDelegate.swift in Sources */,
+				9FA4075E1E0E3DDF00892DE1 /* FancyView.swift in Sources */,
+				9FA407611E0E3E4400892DE1 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +391,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NFW22K3RA8;
 				INFOPLIST_FILE = "Service Provider/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.ITmalaysia.Service-Provider";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -357,6 +406,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NFW22K3RA8;
 				INFOPLIST_FILE = "Service Provider/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.ITmalaysia.Service-Provider";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -383,6 +433,7 @@
 				9F2D09401E0E140100345DEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
