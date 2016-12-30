@@ -9,13 +9,17 @@
 import UIKit
 import Firebase
 
-class SignInVC: UIViewController {
+class SignInVC: UIViewController, UITextFieldDelegate {
     
     var endUserOrPro: Bool? //*(EndUser= True) *(Service Provider = False) --> Recieved from IntroVC
-
+    
+    @IBOutlet var emailTxtFld: FancyFields!
+    @IBOutlet var passwordTxtFld: FancyFields!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        emailTxtFld.delegate = self
+        passwordTxtFld.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +35,18 @@ class SignInVC: UIViewController {
         //*******************************************************
     }
     
+    // Hide Keyboard when user touches any other places when keyboard is UP
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    //************************************************
     @IBAction func backBtnTapped(_ sender: Any) {
         _ = self.navigationController?.popToRootViewController(animated: true)
     }
