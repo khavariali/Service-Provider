@@ -12,4 +12,5 @@ target 'Service Provider' do
   pod 'Firebase/Storage'
   pod 'FBSDKLoginKit'
   pod 'SwiftKeychainWrapper'
+  pod 'Google/SignIn'
 end

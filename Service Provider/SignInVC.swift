@@ -82,7 +82,25 @@ class SignInVC: UIViewController, UITextFieldDelegate {
             }
         })
     }
-    
+    // Here we are checking whether user exist or not and then if its exist LOGIN else create user and log it in.
+    @IBAction func signInTapped(_ sender: Any) {
+        if let email = emailTxtFld.text, let pwd = passwordTxtFld.text { //check fields are not empty
+            FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
+                if error == nil {
+                    print("***REZA*** Email User already exist and authenticated with firebase")
+                } else {
+                    FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
+                        if error != nil {
+                            print("***REZA** Unable toauthenticate with firebase user email \(error.debugDescription)")
+                            
+                        } else {
+                            print("***REZA*** Successfully authenticated with firebase user email")
+                        }
+                    })
+                }
+            })
+        }
+    }
     
     
     

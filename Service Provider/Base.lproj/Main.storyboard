@@ -146,6 +146,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="303" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="login / Register"/>
+                                        <connections>
+                                            <action selector="signInTapped:" destination="hMs-xg-Xof" eventType="touchUpInside" id="M1r-HV-9SY"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8k-JV-q9x" customClass="FancyBtn" customModule="Service_Provider" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="40" width="303" height="30"/>
