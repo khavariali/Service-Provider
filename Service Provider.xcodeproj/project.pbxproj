@@ -15,6 +15,7 @@
 		9F2D09421E0E263800345DEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9F2D09411E0E263800345DEE /* GoogleService-Info.plist */; };
 		9F2DF3181E0E58740020BB39 /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2DF3171E0E58740020BB39 /* FancyBtn.swift */; };
 		9F2DF3201E0EB6B90020BB39 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2DF31F1E0EB6B90020BB39 /* SignInVC.swift */; };
+		9F56B9E31E16314F00A4B111 /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F56B9E21E16314F00A4B111 /* RoundBtn.swift */; };
 		9F83BAF71E12295E00833412 /* FancyFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F83BAF61E12295E00833412 /* FancyFields.swift */; };
 		9FA4075E1E0E3DDF00892DE1 /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */; };
 		9FA407611E0E3E4400892DE1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA407601E0E3E4400892DE1 /* Constants.swift */; };
@@ -33,6 +34,7 @@
 		9F2D09411E0E263800345DEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9F2DF3171E0E58740020BB39 /* FancyBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyBtn.swift; sourceTree = "<group>"; };
 		9F2DF31F1E0EB6B90020BB39 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		9F56B9E21E16314F00A4B111 /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
 		9F83BAF61E12295E00833412 /* FancyFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyFields.swift; sourceTree = "<group>"; };
 		9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
 		9FA407601E0E3E4400892DE1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */,
 				9F2DF3171E0E58740020BB39 /* FancyBtn.swift */,
 				9F83BAF61E12295E00833412 /* FancyFields.swift */,
+				9F56B9E21E16314F00A4B111 /* RoundBtn.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				9F2DF3201E0EB6B90020BB39 /* SignInVC.swift in Sources */,
 				9F2D09301E0E140100345DEE /* AppDelegate.swift in Sources */,
 				9F83BAF71E12295E00833412 /* FancyFields.swift in Sources */,
+				9F56B9E31E16314F00A4B111 /* RoundBtn.swift in Sources */,
 				9FA4075E1E0E3DDF00892DE1 /* FancyView.swift in Sources */,
 				9FA407611E0E3E4400892DE1 /* Constants.swift in Sources */,
 			);

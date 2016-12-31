@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,40 +21,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qil-TP-Ewr">
-                                <rect key="frame" x="66" y="290.5" width="243" height="86"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="HAPPY" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Cy-eh-ejV">
-                                        <rect key="frame" x="0.0" y="0.0" width="84" height="33"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Avenir-HeavyOblique" family="Avenir" pointSize="24"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="SERVICE PROVIDERS" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7YB-3i-Q0m">
-                                        <rect key="frame" x="0.0" y="53" width="243" height="33"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Avenir-HeavyOblique" family="Avenir" pointSize="24"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                </subviews>
-                            </stackView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="www.ITmalaysia.Net" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nn2-EF-3sh">
-                                <rect key="frame" x="16" y="635" width="343" height="32"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Avenir-HeavyOblique" family="Avenir" pointSize="23"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="viber image" translatesAutoresizingMaskIntoConstraints="NO" id="fXM-fZ-CgP" userLabel="Splash">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.9137254901960784" green="0.11764705882352941" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="qil-TP-Ewr" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="6PR-Us-imf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Nn2-EF-3sh" secondAttribute="trailing" id="aXs-aX-T6X"/>
-                            <constraint firstItem="qil-TP-Ewr" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="e0C-gp-R5B"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Nn2-EF-3sh" secondAttribute="bottom" id="fvI-9P-ruE"/>
-                            <constraint firstItem="Nn2-EF-3sh" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="pNa-T7-iur"/>
+                            <constraint firstAttribute="trailing" secondItem="fXM-fZ-CgP" secondAttribute="trailing" id="5Il-ZH-TYA"/>
+                            <constraint firstItem="fXM-fZ-CgP" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Fj9-Gz-IKn"/>
+                            <constraint firstItem="fXM-fZ-CgP" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="UY0-CJ-mG8"/>
+                            <constraint firstAttribute="trailing" secondItem="fXM-fZ-CgP" secondAttribute="trailing" id="XkL-IX-KUi"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="fXM-fZ-CgP" secondAttribute="bottom" id="ZXc-sv-sJr"/>
+                            <constraint firstItem="fXM-fZ-CgP" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="jZZ-Qo-SVt"/>
+                            <constraint firstItem="fXM-fZ-CgP" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="x0t-M1-ASo"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -64,4 +42,7 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="viber image" width="960" height="1280"/>
+    </resources>
 </document>

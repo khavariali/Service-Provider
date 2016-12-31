@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
+import FBSDKCoreKit
 
 class SignInVC: UIViewController, UITextFieldDelegate {
     
@@ -50,4 +52,57 @@ class SignInVC: UIViewController, UITextFieldDelegate {
     @IBAction func backBtnTapped(_ sender: Any) {
         _ = self.navigationController?.popToRootViewController(animated: true)
     }
+    
+    
+    //Implementing facebook login action*****************************
+    
+    @IBAction func facebookBtnTapped(_ sender: Any) {
+        let facebookLogin = FBSDKLoginManager()
+        facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
+            if error != nil {
+                print("***REZA*** Unable to authenticate with facebook\(error.debugDescription)")
+            }else if result?.isCancelled == true {
+                print("***REZA*** User cancled facebook authentication") // Might user didn't want to give its email address to this app.!!!!
+            } else {
+                print("***REZA*** Successfully authenticated with facebook")
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString) // Here we are passing facebook credential to firebase *Its very important to use .tokenString end of the statement
+                self.firebaseAuth(credential) //calling our method which we write to login if their facebook auth was successfully *remember to put self in it because we are calling from inside a function.
+            }
+        }
+    }
+    
+    //***************************************************************
+    
+    func firebaseAuth(_ credential : FIRAuthCredential) {
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            if error != nil {
+                print("***REZA*** Unable to authenticate with firebase\(error.debugDescription)")
+            } else {
+                print("***REZA*** Successfully Authenticated with firebase")
+            }
+        })
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
