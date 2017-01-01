@@ -24,11 +24,12 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
         emailTxtFld.delegate = self
         passwordTxtFld.delegate = self
         
-        //*********Google delegate************
+        //****************
+        //Google delegate*
+        //****************
         
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-//        GIDSignIn.sharedInstance().signIn()
         
         //*************************************
     }
@@ -40,13 +41,18 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Hide back btn on navigation controller****************
+        //***************************************
+        //Hide back btn on navigation controller*
+        //***************************************
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         //*******************************************************
     }
-    
-    // Hide Keyboard when user touches any other places when keyboard is UP
+    //********************************
+    //Hide Keyboard when user touches*
+    //any other places when keyboard *
+    //is UP                          *
+    //********************************
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -63,7 +69,9 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
     }
     
     
-    //Implementing facebook login action*****************************
+    //***********************************
+    //Implementing facebook login action*
+    //***********************************
     
     @IBAction func facebookBtnTapped(_ sender: Any) {
         let facebookLogin = FBSDKLoginManager()
@@ -74,7 +82,7 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
                 print("***REZA*** User cancled facebook authentication\(error.debugDescription)") // Might user didn't want to give its email address to this app.!!!!
             } else {
                 print("***REZA*** Successfully authenticated with facebook")
-                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString) // Here we are passing facebook credential to firebase *Its very important to use .tokenString end of the statement
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString) //Here we are passing facebook credential to firebase *Its very important to use .tokenString end of the statement
                 
                 self.firebaseAuth(credential) //calling our method which we write to login if their facebook auth was successfully *remember to put self in it because we are calling from inside a function.
             }
@@ -83,7 +91,9 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
     
     //***************************************************************
     
-    //*******************************Google signin tapped*******************************
+    //*********************
+    //Google signin tapped*
+    //*********************
     
     @IBAction func googleBtnTapped(_ sender: Any) {
         GIDSignIn.sharedInstance().signIn()
@@ -108,7 +118,10 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
     }
     //**************************************************************
     
-    //***************Firebase auth (Signin) send here after facebook or google successfuly authenticated************************
+    //*********************************************
+    //Firebase auth (Signin) send here after      *
+    //facebook or google successfuly authenticated*
+    //*********************************************
     func firebaseAuth(_ credential : FIRAuthCredential) {
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if error != nil {
@@ -120,7 +133,14 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
     }
     //**************************************************************
     
-    // Here we are checking whether user exist or not and then if its exist LOGIN else create user and log it in.
+    //****************************
+    //* Here we are checking     *
+    //* whether user exist or    *
+    //* not and then if its      *
+    //* exist LOGIN else         *
+    //* create user and log      *
+    //* it in.                   *
+    //****************************
     @IBAction func signInTapped(_ sender: Any) {
         if let email = emailTxtFld.text, let pwd = passwordTxtFld.text { //check fields are not empty
             FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
@@ -140,25 +160,19 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
         }
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    //**********************
+    //*      This is       *
+    //*    How Next Btn    *
+    //*    On Keyboard     *
+    //*     working        *
+    //*                    *
+    //*                    *
+    //**********************
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+        if textField == emailTxtFld { // Switch focus to other text field
+            passwordTxtFld.becomeFirstResponder()
+        }
+    }
+    //*****************************
 }
