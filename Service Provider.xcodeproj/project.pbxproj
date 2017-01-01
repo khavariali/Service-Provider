@@ -20,6 +20,7 @@
 		9FA4075E1E0E3DDF00892DE1 /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */; };
 		9FA407611E0E3E4400892DE1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA407601E0E3E4400892DE1 /* Constants.swift */; };
 		9FD634661E18B286002FFE92 /* GsignInHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD634651E18B286002FFE92 /* GsignInHeader.m */; };
+		9FD634681E193E0A002FFE92 /* SosRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD634671E193E0A002FFE92 /* SosRegisterVC.swift */; };
 		DAA39C4ABA94608614B74C9D /* Pods_Service_Provider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350E7580D42EFD29940C2475 /* Pods_Service_Provider.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		9FA407601E0E3E4400892DE1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9FD634641E18B285002FFE92 /* Service Provider-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Service Provider-Bridging-Header.h"; sourceTree = "<group>"; };
 		9FD634651E18B286002FFE92 /* GsignInHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GsignInHeader.m; sourceTree = "<group>"; };
+		9FD634671E193E0A002FFE92 /* SosRegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SosRegisterVC.swift; sourceTree = "<group>"; };
 		E9928A26768D9554263BE79B /* Pods-Service Provider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Service Provider.release.xcconfig"; path = "Pods/Target Support Files/Pods-Service Provider/Pods-Service Provider.release.xcconfig"; sourceTree = "<group>"; };
 		EB0833E457802541E2D5FBB4 /* Pods-Service Provider.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Service Provider.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Service Provider/Pods-Service Provider.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,7 @@
 			children = (
 				9F2D09311E0E140100345DEE /* IntroVC.swift */,
 				9F2DF31F1E0EB6B90020BB39 /* SignInVC.swift */,
+				9FD634671E193E0A002FFE92 /* SosRegisterVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				9F56B9E31E16314F00A4B111 /* RoundBtn.swift in Sources */,
 				9FA4075E1E0E3DDF00892DE1 /* FancyView.swift in Sources */,
 				9FA407611E0E3E4400892DE1 /* Constants.swift in Sources */,
+				9FD634681E193E0A002FFE92 /* SosRegisterVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

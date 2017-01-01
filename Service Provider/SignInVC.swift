@@ -128,6 +128,7 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
                 print("***REZA*** Unable to authenticate with firebase\(error.debugDescription)")
             } else {
                 print("***REZA*** Successfully Authenticated with firebase")
+                self.gotoSosVC()
             }
         })
     }
@@ -153,6 +154,7 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
                             
                         } else {
                             print("***REZA*** Successfully authenticated with firebase user email")
+                            self.gotoSosVC()
                         }
                     })
                 }
@@ -175,4 +177,10 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
         }
     }
     //*****************************
+    
+    //goto sosRegisterVC
+    func gotoSosVC() {
+        self.navigationController?.pushViewController(sosRegisterVC, animated: true)
+    }
+    //******************
 }
