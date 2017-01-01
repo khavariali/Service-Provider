@@ -119,6 +119,9 @@
                                         <state key="normal" title="Login with Google">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="googleBtnTapped:" destination="hMs-xg-Xof" eventType="touchUpInside" id="Yoq-qK-gRz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -210,7 +213,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="G3M-9b-2Y7" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vZT-Rk-dZb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="vZT-Rk-dZb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

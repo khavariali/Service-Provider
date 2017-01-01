@@ -10,9 +10,10 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 import FBSDKCoreKit
+import GoogleSignIn
 
-class SignInVC: UIViewController, UITextFieldDelegate {
-    
+class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
+
     var endUserOrPro: Bool? //*(EndUser= True) *(Service Provider = False) --> Recieved from IntroVC
     
     @IBOutlet var emailTxtFld: FancyFields!
@@ -22,6 +23,14 @@ class SignInVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         emailTxtFld.delegate = self
         passwordTxtFld.delegate = self
+        
+        //*********Google delegate************
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+//        GIDSignIn.sharedInstance().signIn()
+        
+        //*************************************
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,10 +71,11 @@ class SignInVC: UIViewController, UITextFieldDelegate {
             if error != nil {
                 print("***REZA*** Unable to authenticate with facebook\(error.debugDescription)")
             }else if result?.isCancelled == true {
-                print("***REZA*** User cancled facebook authentication") // Might user didn't want to give its email address to this app.!!!!
+                print("***REZA*** User cancled facebook authentication\(error.debugDescription)") // Might user didn't want to give its email address to this app.!!!!
             } else {
                 print("***REZA*** Successfully authenticated with facebook")
                 let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString) // Here we are passing facebook credential to firebase *Its very important to use .tokenString end of the statement
+                
                 self.firebaseAuth(credential) //calling our method which we write to login if their facebook auth was successfully *remember to put self in it because we are calling from inside a function.
             }
         }
@@ -73,6 +83,32 @@ class SignInVC: UIViewController, UITextFieldDelegate {
     
     //***************************************************************
     
+    //*******************************Google signin tapped*******************************
+    
+    @IBAction func googleBtnTapped(_ sender: Any) {
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("***REZA*** User Unable SignIned with google account\(error.localizedDescription)")
+            return
+        } else {
+            print("***REZA*** User SignIned with google account")
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        
+        firebaseAuth(credential)
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        
+    }
+    //**************************************************************
+    
+    //***************Firebase auth (Signin) send here after facebook or google successfuly authenticated************************
     func firebaseAuth(_ credential : FIRAuthCredential) {
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if error != nil {
@@ -82,6 +118,8 @@ class SignInVC: UIViewController, UITextFieldDelegate {
             }
         })
     }
+    //**************************************************************
+    
     // Here we are checking whether user exist or not and then if its exist LOGIN else create user and log it in.
     @IBAction func signInTapped(_ sender: Any) {
         if let email = emailTxtFld.text, let pwd = passwordTxtFld.text { //check fields are not empty
@@ -91,7 +129,7 @@ class SignInVC: UIViewController, UITextFieldDelegate {
                 } else {
                     FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
                         if error != nil {
-                            print("***REZA** Unable toauthenticate with firebase user email \(error.debugDescription)")
+                            print("***REZA** Unable to authenticate with firebase user email \(error.debugDescription)")
                             
                         } else {
                             print("***REZA*** Successfully authenticated with firebase user email")

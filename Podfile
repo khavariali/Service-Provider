@@ -13,4 +13,5 @@ target 'Service Provider' do
   pod 'FBSDKLoginKit'
   pod 'SwiftKeychainWrapper'
   pod 'Google/SignIn'
+  pod 'GoogleSignIn'
 end

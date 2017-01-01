@@ -19,6 +19,7 @@
 		9F83BAF71E12295E00833412 /* FancyFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F83BAF61E12295E00833412 /* FancyFields.swift */; };
 		9FA4075E1E0E3DDF00892DE1 /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */; };
 		9FA407611E0E3E4400892DE1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA407601E0E3E4400892DE1 /* Constants.swift */; };
+		9FD634661E18B286002FFE92 /* GsignInHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD634651E18B286002FFE92 /* GsignInHeader.m */; };
 		DAA39C4ABA94608614B74C9D /* Pods_Service_Provider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350E7580D42EFD29940C2475 /* Pods_Service_Provider.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,8 @@
 		9F83BAF61E12295E00833412 /* FancyFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyFields.swift; sourceTree = "<group>"; };
 		9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
 		9FA407601E0E3E4400892DE1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9FD634641E18B285002FFE92 /* Service Provider-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Service Provider-Bridging-Header.h"; sourceTree = "<group>"; };
+		9FD634651E18B286002FFE92 /* GsignInHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GsignInHeader.m; sourceTree = "<group>"; };
 		E9928A26768D9554263BE79B /* Pods-Service Provider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Service Provider.release.xcconfig"; path = "Pods/Target Support Files/Pods-Service Provider/Pods-Service Provider.release.xcconfig"; sourceTree = "<group>"; };
 		EB0833E457802541E2D5FBB4 /* Pods-Service Provider.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Service Provider.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Service Provider/Pods-Service Provider.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +105,8 @@
 				9F2D09381E0E140100345DEE /* LaunchScreen.storyboard */,
 				9F2D09411E0E263800345DEE /* GoogleService-Info.plist */,
 				9F2D093B1E0E140100345DEE /* Info.plist */,
+				9FD634651E18B286002FFE92 /* GsignInHeader.m */,
+				9FD634641E18B285002FFE92 /* Service Provider-Bridging-Header.h */,
 			);
 			path = "Service Provider";
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 					9F2D092B1E0E140100345DEE = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = NFW22K3RA8;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -271,6 +277,7 @@
 				9F2DF3201E0EB6B90020BB39 /* SignInVC.swift in Sources */,
 				9F2D09301E0E140100345DEE /* AppDelegate.swift in Sources */,
 				9F83BAF71E12295E00833412 /* FancyFields.swift in Sources */,
+				9FD634661E18B286002FFE92 /* GsignInHeader.m in Sources */,
 				9F56B9E31E16314F00A4B111 /* RoundBtn.swift in Sources */,
 				9FA4075E1E0E3DDF00892DE1 /* FancyView.swift in Sources */,
 				9FA407611E0E3E4400892DE1 /* Constants.swift in Sources */,
@@ -398,12 +405,15 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = NFW22K3RA8;
 				INFOPLIST_FILE = "Service Provider/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.ITmalaysia.Service-Provider";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Service Provider/Service Provider-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -414,12 +424,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = NFW22K3RA8;
 				INFOPLIST_FILE = "Service Provider/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.ITmalaysia.Service-Provider";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Service Provider/Service Provider-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
