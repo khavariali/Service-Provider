@@ -237,12 +237,12 @@
                                             <constraint firstAttribute="width" constant="50" id="LJI-cC-3fW"/>
                                             <constraint firstAttribute="height" constant="30" id="Tmr-av-6ug"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
                                         <state key="normal" title="&lt; Sign Out">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="backBtnTapped:" destination="hMs-xg-Xof" eventType="touchUpInside" id="AsA-Va-iFw"/>
+                                            <action selector="signOutTapped:" destination="Z9A-gf-PSu" eventType="touchUpInside" id="PaM-AC-bsj"/>
                                         </connections>
                                     </button>
                                 </subviews>

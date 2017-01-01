@@ -14,3 +14,6 @@ let SHADOW_GRAY: CGFloat = 120.0 / 255.0
 let storyBoard = UIStoryboard(name: "Main", bundle: nil)
 let signInVC = storyBoard.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
 let sosRegisterVC = storyBoard.instantiateViewController(withIdentifier: "SosRegisterVC") as! SosRegisterVC
+
+
+let KEY_UID = "uid"

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
+import Google
+import GoogleSignIn
 
 class SosRegisterVC: UIViewController {
 
@@ -31,5 +34,9 @@ class SosRegisterVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func signOutTapped(_ sender: Any) {
+        let signOutResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+        print("***REZA*** user data removed from keychain \(signOutResult)")
+        _ = self.navigationController?.popToRootViewController(animated: true)
+    }
 }

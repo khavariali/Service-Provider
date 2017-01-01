@@ -11,6 +11,7 @@ import Firebase
 import FBSDKLoginKit
 import FBSDKCoreKit
 import GoogleSignIn
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
 
@@ -24,6 +25,11 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
         emailTxtFld.delegate = self
         passwordTxtFld.delegate = self
         
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            print("***REZA***You loged in before so app will directly go to the main page instead of sign in")
+            gotoSosVC()
+        }
+        
         //****************
         //Google delegate*
         //****************
@@ -34,10 +40,6 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
         //*************************************
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -128,7 +130,14 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
                 print("***REZA*** Unable to authenticate with firebase\(error.debugDescription)")
             } else {
                 print("***REZA*** Successfully Authenticated with firebase")
-                self.gotoSosVC()
+                
+                //*************************************
+                //*Adding user to SwiftKeyChainWrapper*
+                //*************************************
+                if let user = user {
+                    self.completeSignIn(id: user.uid)
+                }
+                //*************************************
             }
         })
     }
@@ -147,6 +156,9 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
             FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
                 if error == nil {
                     print("***REZA*** Email User already exist and authenticated with firebase")
+                    if let user = user {
+                        self.completeSignIn(id: user.uid)
+                    }
                 } else {
                     FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
                         if error != nil {
@@ -154,7 +166,9 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
                             
                         } else {
                             print("***REZA*** Successfully authenticated with firebase user email")
-                            self.gotoSosVC()
+                            if let user = user {
+                                self.completeSignIn(id: user.uid)
+                            }
                         }
                     })
                 }
@@ -183,4 +197,23 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
         self.navigationController?.pushViewController(sosRegisterVC, animated: true)
     }
     //******************
+    
+    //*********************
+    //*Save User data to  *
+    //*the keyChain       *
+    //*********************
+    func completeSignIn(id: String) {
+        let keyChainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        print("***REZA** data save to keychain\(keyChainResult)")
+        gotoSosVC()
+    }
+    //*********************
+    
+    
+    
+    
+    
+    
+    
+    
 }
