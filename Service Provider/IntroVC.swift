@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
+import Firebase
 
 class IntroVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            print("***REZA***You loged in before so app will directly go to the main page instead of sign in")
+            self.navigationController?.pushViewController(sosRegisterVC, animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {

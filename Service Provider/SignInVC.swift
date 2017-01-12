@@ -14,7 +14,7 @@ import GoogleSignIn
 import SwiftKeychainWrapper
 
 class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
-
+    
     var endUserOrPro: Bool? //*(EndUser= True) *(Service Provider = False) --> Recieved from IntroVC
     
     @IBOutlet var emailTxtFld: FancyFields!
@@ -25,11 +25,6 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
         emailTxtFld.delegate = self
         passwordTxtFld.delegate = self
         
-        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
-            print("***REZA***You loged in before so app will directly go to the main page instead of sign in")
-            gotoSosVC()
-        }
-        
         //****************
         //Google delegate*
         //****************
@@ -39,12 +34,12 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
         
         //*************************************
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         //***************************************
-        //Hide back btn on navigation controller*
+        // MARK: Hide back btn on navigation controller*
         //***************************************
         
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -76,6 +71,10 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
     //***********************************
     
     @IBAction func facebookBtnTapped(_ sender: Any) {
+        facebookConnect()
+    }
+    
+    func facebookConnect() {
         let facebookLogin = FBSDKLoginManager()
         facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
             if error != nil {
@@ -93,14 +92,17 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
     
     //***************************************************************
     
-    //*********************
-    //Google signin tapped*
-    //*********************
+
+    // MARK: Google signin tapped
+
     
     @IBAction func googleBtnTapped(_ sender: Any) {
-        GIDSignIn.sharedInstance().signIn()
+        googleConnect()
     }
     
+    func googleConnect() {
+        GIDSignIn.sharedInstance().signIn()
+    }
     public func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
             print("***REZA*** User Unable SignIned with google account\(error.localizedDescription)")
@@ -115,105 +117,256 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
         firebaseAuth(credential)
     }
     
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        
-    }
-    //**************************************************************
+
+    // MARK: Firebase auth (Signin) send here after
+    //facebook or google successfuly authenticated
     
-    //*********************************************
-    //Firebase auth (Signin) send here after      *
-    //facebook or google successfuly authenticated*
-    //*********************************************
     func firebaseAuth(_ credential : FIRAuthCredential) {
+        // TODO: Check new user or exist, set created date to it 
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if error != nil {
                 print("***REZA*** Unable to authenticate with firebase\(error.debugDescription)")
             } else {
                 print("***REZA*** Successfully Authenticated with firebase")
                 
-                //*************************************
-                //*Adding user to SwiftKeyChainWrapper*
-                //*************************************
+                
+                // MARK: Adding user to SwiftKeyChainWrapper*
+                
                 if let user = user {
-                    self.completeSignIn(id: user.uid)
+                    let userData = ["provider": credential.provider]
+                    
+                    self.completeSignIn(id: user.uid, userData: userData, new: false)
                 }
-                //*************************************
+                
             }
         })
     }
-    //**************************************************************
     
-    //****************************
-    //* Here we are checking     *
-    //* whether user exist or    *
-    //* not and then if its      *
-    //* exist LOGIN else         *
-    //* create user and log      *
-    //* it in.                   *
-    //****************************
+    // MARK: User Login/Register Manager
     @IBAction func signInTapped(_ sender: Any) {
-        if let email = emailTxtFld.text, let pwd = passwordTxtFld.text { //check fields are not empty
-            FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
-                if error == nil {
-                    print("***REZA*** Email User already exist and authenticated with firebase")
-                    if let user = user {
-                        self.completeSignIn(id: user.uid)
-                    }
+        var userProvider: String = ""
+        if let email = emailTxtFld.text, let pwd = passwordTxtFld.text { // MARK: check fields are not empty
+            
+            
+            _ = FIRAuth.auth()?.fetchProviders(forEmail: email, completion: { (result, error) in
+                if error != nil {
+                    print("***REZA****\(error.debugDescription)***")
                 } else {
-                    FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
-                        if error != nil {
-                            print("***REZA** Unable to authenticate with firebase user email \(error.debugDescription)")
+                    if let result = result {
+                        
+                        if result[0].contains("facebook.com") {
+                            
+                            // MARK: Already registered with facebook
+                            userProvider = "Facebook"
+                            
+                            self.sendAlert(title: "Warning!", message: "Account already exist, Please login with your \(userProvider) Account", btnTxt: "ok", provider: userProvider)
+                            
+                        } else if result[0].contains("google.com") {
+                            
+                            // MARK: already registered with google
+                            userProvider = "Google"
+                            
+                            self.sendAlert(title: "Warning!", message: "Account already exist, Please login with your \(userProvider) Account", btnTxt: "OK", provider: userProvider)
                             
                         } else {
-                            print("***REZA*** Successfully authenticated with firebase user email")
-                            if let user = user {
-                                self.completeSignIn(id: user.uid)
-                            }
+                            // MARK: already registered with email/pass
+                            userProvider = "Firebase/Email"
+                            
+                            FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
+                                if error == nil {
+                                    print("***REZA*** Email User already exist and authenticated with firebase")
+                                    if let user = user {
+                                        let userData = ["provider": user.providerID]
+                                        self.completeSignIn(id: user.uid, userData: userData, new: false)
+                                    }
+                                } else {
+                                    if let errSignin = FIRAuthErrorCode(rawValue: (error?._code)!)
+                                    {
+                                        switch errSignin {
+                                        case .errorCodeWrongPassword :
+                                            // MARK: ALERT WrongPassword
+                                            self.sendAlert(title: "Warning!", message: "Wrong Password", btnTxt: "Try again", provider: "Forget")
+                                            
+                                        case .errorCodeUserDisabled :
+                                            // MARK: UserDisabled
+                                            self.sendAlert(title: "Warning!", message: "Your account has been disabled please contact support!", btnTxt: "ok", provider: "Support")
+                                            
+                                        default: print("def.......\(errSignin)")
+                                        }
+                                    }
+                                    
+                                    
+                                }
+                            })
                         }
-                    })
+                    } else {
+                        // TODO: Not exist and have to register and check do error handlers
+                        FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
+                            if error != nil {
+                                
+                                // MARK: CreateUser Error Handler
+                                if let errCode = FIRAuthErrorCode(rawValue: (error?._code)!)
+                                {
+                                    switch errCode {
+                                    case .errorCodeEmailAlreadyInUse :
+                                        _ = FIRAuth.auth()?.fetchProviders(forEmail: email, completion: { (result, error) in
+                                            if let result = result {
+                                                
+                                                // MARK: ALERT EmailAlreadyInUse
+                                                let alertController = UIAlertController(title: "Warning", message: "This email already registered with your \(result) account, Please login with \(result))", preferredStyle: UIAlertControllerStyle.alert)
+                                                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                                                    (result : UIAlertAction) -> Void in
+                                                    print("OK")
+                                                }
+                                                alertController.addAction(okAction)
+                                                self.present(alertController, animated: true, completion: nil)
+                                                
+                                            }
+                                        })
+                                    case .errorCodeInvalidEmail :
+                                        // MARK: ALERT InvalidEmail
+                                        let alertController = UIAlertController(title: "Warning", message: "Invalid Email Address", preferredStyle: UIAlertControllerStyle.alert)
+                                        let okAction = UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default) {
+                                            (result : UIAlertAction) -> Void in
+                                            print("OK")
+                                        }
+                                        alertController.addAction(okAction)
+                                        self.present(alertController, animated: true, completion: nil)
+                                        
+                                    case .errorCodeWeakPassword :
+                                        // MARK: ALERT WeakPassword
+                                        let alertController = UIAlertController(title: "Warning", message: "Weak Password ! Password should be at least 6 characters", preferredStyle: UIAlertControllerStyle.alert)
+                                        let okAction = UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default) {
+                                            (result : UIAlertAction) -> Void in
+                                            print("OK")
+                                        }
+                                        alertController.addAction(okAction)
+                                        self.present(alertController, animated: true, completion: nil)
+                                        
+                                    default: print("def.......\(errCode)")
+                                    }
+                                }
+                                
+                                print("***REZA** Unable to authenticate with firebase user email \(error.debugDescription)")
+                                
+                            } else {
+                                print("***REZA*** Successfully authenticated with firebase user email")
+                                if let user = user {
+                                    let userData = ["provider": user.providerID]
+                                    self.completeSignIn(id: user.uid, userData: userData, new: true)
+                                }
+                            }
+                        })
+                        
+                    }
                 }
             })
+            
+            
+            //*****************
+            
         }
     }
     
-    //**********************
-    //*      This is       *
-    //*    How Next Btn    *
-    //*    On Keyboard     *
-    //*     working        *
-    //*                    *
-    //*                    *
-    //**********************
+    // MARK: Next Btn on Keyboard
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
-        if textField == emailTxtFld { // Switch focus to other text field
+        if textField == emailTxtFld { // MARK: Switch focus to other text field
             passwordTxtFld.becomeFirstResponder()
         }
     }
     //*****************************
     
-    //goto sosRegisterVC
+    // MARK: Go to sosRegisterVC
     func gotoSosVC() {
         self.navigationController?.pushViewController(sosRegisterVC, animated: true)
     }
     //******************
     
-    //*********************
-    //*Save User data to  *
-    //*the keyChain       *
-    //*********************
-    func completeSignIn(id: String) {
+    // MARK: UserData -> KeyChain
+    func completeSignIn(id: String, userData: Dictionary<String, String>, new: Bool) {
+        
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
+        
         let keyChainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("***REZA** data save to keychain\(keyChainResult)")
         gotoSosVC()
     }
     //*********************
     
-    
-    
-    
-    
-    
-    
-    
+    //MARK: Send acurate Alert(message) in signin view
+    func sendAlert(title: String, message: String, btnTxt: String, provider: String?) {
+        if provider == nil {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert) //Replace UIAlertControllerStyle.Alert by UIAlertControllerStyle.alert
+            let btnAction = UIAlertAction(title: btnTxt, style: UIAlertActionStyle.default) {
+                (result : UIAlertAction) -> Void in
+                print("\(btnTxt)ed")
+            }
+            alertController.addAction(btnAction)
+            self.present(alertController, animated: true, completion: nil)
+        } else {
+            
+            //TODO alert for two btns e.g. ok and facebook, try again and forget password
+            
+            switch provider! {
+            case "Facebook" :
+                let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+                let firstActionBtn = UIAlertAction(title: btnTxt, style: UIAlertActionStyle.default) {
+                    (result : UIAlertAction) -> Void in
+                    print("firstActionBtn")
+                }
+                let secActionBtn = UIAlertAction(title: provider, style: UIAlertActionStyle.destructive) {
+                    (result : UIAlertAction) -> Void in
+                    self.facebookConnect()
+                }
+                alertController.addAction(secActionBtn)
+                alertController.addAction(firstActionBtn)
+                self.present(alertController, animated: true, completion: nil)
+                
+            case "Google" :
+                let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+                let firstActionBtn = UIAlertAction(title: btnTxt, style: UIAlertActionStyle.default) {
+                    (result : UIAlertAction) -> Void in
+                    print("firstActionBtn")
+                }
+                let secActionBtn = UIAlertAction(title: provider, style: UIAlertActionStyle.destructive) {
+                    (result : UIAlertAction) -> Void in
+                    self.googleConnect()
+                }
+                alertController.addAction(secActionBtn)
+                alertController.addAction(firstActionBtn)
+                self.present(alertController, animated: true, completion: nil)
+            //TODO: I have to impelement this for wrong password
+            case "Forget" :
+                let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+                let firstActionBtn = UIAlertAction(title: btnTxt, style: UIAlertActionStyle.default) {
+                    (result : UIAlertAction) -> Void in
+                    print("firstActionBtn")
+                }
+                let secActionBtn = UIAlertAction(title: provider, style: UIAlertActionStyle.destructive) {
+                    (result : UIAlertAction) -> Void in
+                    print("SecactionBtn")
+                }
+                alertController.addAction(secActionBtn)
+                alertController.addAction(firstActionBtn)
+                self.present(alertController, animated: true, completion: nil)
+            case "Support" :
+                let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+                let firstActionBtn = UIAlertAction(title: btnTxt, style: UIAlertActionStyle.default) {
+                    (result : UIAlertAction) -> Void in
+                    print("firstActionBtn")
+                }
+                let secActionBtn = UIAlertAction(title: provider, style: UIAlertActionStyle.destructive) {
+                    (result : UIAlertAction) -> Void in
+                    print("SecactionBtn")
+                }
+                alertController.addAction(secActionBtn)
+                alertController.addAction(firstActionBtn)
+                self.present(alertController, animated: true, completion: nil)
+                
+            default : print("Default")
+                
+            }
+        }
+    }
 }

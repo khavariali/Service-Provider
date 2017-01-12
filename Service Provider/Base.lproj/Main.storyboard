@@ -126,16 +126,16 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="YK5-Wc-nbL">
-                                <rect key="frame" x="36" y="304.5" width="303" height="57"/>
+                                <rect key="frame" x="36" y="304.5" width="303" height="77"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M3h-dp-4Gd" customClass="FancyFields" customModule="Service_Provider" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="303" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="31"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HUu-wZ-uNI" customClass="FancyFields" customModule="Service_Provider" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="36" width="303" height="21"/>
+                                        <rect key="frame" x="0.0" y="46" width="303" height="31"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -143,7 +143,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1v9-N2-m6q">
-                                <rect key="frame" x="36" y="381.5" width="303" height="82"/>
+                                <rect key="frame" x="36" y="401.5" width="303" height="82"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6X-Wi-Ega" customClass="FancyBtn" customModule="Service_Provider" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="303" height="36"/>
