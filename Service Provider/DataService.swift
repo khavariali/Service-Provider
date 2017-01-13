@@ -39,15 +39,18 @@ class DataService {
                 self.REF_USERS.child(uid).updateChildValues(userData)
             } else {
                 
+                // MARK: TimeStamp to customized time format
+                //let unixTimestamp = 1484277549.329164
+                //let date = NSDate(timeIntervalSince1970: unixTimestamp)
                 
-                let unixTimestamp = 1480134638.0
-                let date = NSDate(timeIntervalSince1970: unixTimestamp)
+                //let dateFormatter = DateFormatter()
+                //dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+                //dateFormatter.locale = NSLocale.current
+                //dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+                //let strDate = dateFormatter.string(from: date as Date)
                 
-                let dateFormatter = DateFormatter()
-                dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
-                dateFormatter.locale = NSLocale.current
-                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-                let strDate = dateFormatter.string(from: date as Date)
+                // MARK: Generating Unix TimeStamp
+                let strDate = NSDate().timeIntervalSince1970
                 
                 if let provider = userData["provider"] {
                 
