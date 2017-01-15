@@ -33,4 +33,31 @@ class SosRegisterVC: UIViewController {
         _ = navigationController?.popViewController(animated: true) // To navigate back to the previuse view controller we have to use this.
 //        _ = self.navigationController?.pushViewController(signInVC, animated: true)
     }
+    //MARK: CALLING menu
+    
+    lazy var settingsLauncher: SettingsLauncher = {
+        let launcher = SettingsLauncher()
+        launcher.sosRegVC = self
+        return launcher
+    }()
+    
+    func handleMore() {
+        settingsLauncher.showSettings()
+    }
+    //MARK: GOTO VIEW CONTROLLER
+    func showControllerForSetting(setting: Setting) {
+        // MARK: HOW TO CREAT VIEWCONTROLLER
+        let dummySettingViewController = UIViewController()
+        dummySettingViewController.navigationItem.title = setting.name
+        dummySettingViewController.view.backgroundColor = UIColor.white
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blue]
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.pushViewController(dummySettingViewController, animated: true)
+        
+    }
+    
+    @IBAction func profileMenu(_ sender: Any) {
+        handleMore()
+    }
 }
