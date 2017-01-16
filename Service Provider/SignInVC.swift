@@ -15,12 +15,6 @@ import SwiftKeychainWrapper
 
 class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
-    //****scrolview test
-    var tutImages = [UIImageView]()
-    
-    @IBOutlet var tutScrollView: UIScrollView!
-    
-    //******************
     
     var endUserOrPro: Bool? //*(EndUser= True) *(Service Provider = False) --> Recieved from IntroVC
     
@@ -29,29 +23,12 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //****scrolview test
-        var contentWidth: CGFloat = 0.0
-        for x in 0...1 {
-            let image = UIImage(named: "\(x).png")
-            let imageView = UIImageView(image: image)
-            tutImages.append(imageView)
-            
-            var newX : CGFloat = 0.0
-            
-            newX = view.frame.minX + view.frame.size.width * CGFloat(x)
-            contentWidth += newX
-            tutScrollView.addSubview(imageView)
-            imageView.frame = CGRect(x: newX, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-//            
-//            let tutStartBtn = UIButton()
-//            tutStartBtn.setTitle("Get Start", for: .normal)
-//            tutScrollView.subviews(tutStartBtn)
-            
-            print("***reza***\(x).png")
+
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            print("***REZA***You loged in before so app will directly go to the main page instead of sign in")
+            self.navigationController?.pushViewController(sosRegisterVC, animated: true)
         }
-        tutScrollView.contentSize = CGSize(width: contentWidth * 2, height: view.frame.size.height)
-        //******************
-        
+
         emailTxtFld.delegate = self
         passwordTxtFld.delegate = self
         
