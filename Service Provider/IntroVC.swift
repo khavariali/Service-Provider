@@ -20,6 +20,9 @@ class IntroVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if let tut = UserDefaults.standard.object(forKey: "tutorial") {
             print("Show welcome tutorial ? \(tut)")
             if String(describing: tut) == "false" {
@@ -29,7 +32,6 @@ class IntroVC: UIViewController {
             showTutorial()
         }
     }
-    
     //******Sending a Bool which will define user type enduser/provider*************
     
     //    @IBAction func sosTapped(_ sender: Any) {

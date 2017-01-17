@@ -16,48 +16,40 @@ import SwiftKeychainWrapper
 class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDSignInDelegate {
     
     
-    var endUserOrPro: Bool? //*(EndUser= True) *(Service Provider = False) --> Recieved from IntroVC
-    
     @IBOutlet var emailTxtFld: FancyFields!
     @IBOutlet var passwordTxtFld: FancyFields!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
-            print("***REZA***You loged in before so app will directly go to the main page instead of sign in")
-            self.navigationController?.pushViewController(sosRegisterVC, animated: true)
-        }
-
+        
         emailTxtFld.delegate = self
         passwordTxtFld.delegate = self
         
-        //****************
-        //Google delegate*
-        //****************
         
+        //MARK: Google delegate
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
         
-        //*************************************
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //***************************************
-        // MARK: Hide back btn on navigation controller*
-        //***************************************
+        //MARK: Goto ForkVC, Already logedin
+//        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+//            print("***REZA***You loged in before so app will directly go to the main page instead of sign in")
+//            gotoForkVC()
+//        }
+        
+        
+        // MARK: Hide back btn on navigation controller
         
         navigationController?.setNavigationBarHidden(true, animated: false)
-        //*******************************************************
+        
     }
-    //********************************
-    //Hide Keyboard when user touches*
-    //any other places when keyboard *
-    //is UP                          *
-    //********************************
     
+    //MARK: Dismiss Keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -67,15 +59,14 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
         return true
     }
     
-    //************************************************
+    
     @IBAction func backBtnTapped(_ sender: Any) {
         _ = self.navigationController?.popToRootViewController(animated: true)
     }
     
     
-    //***********************************
-    //Implementing facebook login action*
-    //***********************************
+    
+    //MARK: FacebookLogin BTN
     
     @IBAction func facebookBtnTapped(_ sender: Any) {
         facebookConnect()
@@ -97,11 +88,9 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
         }
     }
     
-    //***************************************************************
     
-
+    
     // MARK: Google signin tapped
-
     
     @IBAction func googleBtnTapped(_ sender: Any) {
         googleConnect()
@@ -124,12 +113,12 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
         firebaseAuth(credential)
     }
     
-
+    
     // MARK: Firebase auth (Signin) send here after
     //facebook or google successfuly authenticated
     
     func firebaseAuth(_ credential : FIRAuthCredential) {
-        // TODO: Check new user or exist, set created date to it 
+        
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if error != nil {
                 print("***REZA*** Unable to authenticate with firebase\(error.debugDescription)")
@@ -207,7 +196,7 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
                             })
                         }
                     } else {
-                        // TODO: Not exist and have to register and check do error handlers
+                        
                         FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
                             if error != nil {
                                 
@@ -268,10 +257,6 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
                     }
                 }
             })
-            
-            
-            //*****************
-            
         }
     }
     
@@ -282,13 +267,11 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
             passwordTxtFld.becomeFirstResponder()
         }
     }
-    //*****************************
     
     // MARK: Go to sosRegisterVC
-    func gotoSosVC() {
-        self.navigationController?.pushViewController(sosRegisterVC, animated: true)
+    func gotoForkVC() {
+        self.navigationController?.pushViewController(forkVC, animated: true)
     }
-    //******************
     
     // MARK: UserData -> KeyChain
     func completeSignIn(id: String, userData: Dictionary<String, String>, new: Bool) {
@@ -297,9 +280,8 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
         
         let keyChainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("***REZA** data save to keychain\(keyChainResult)")
-        gotoSosVC()
+        gotoForkVC()
     }
-    //*********************
     
     //MARK: Send acurate Alert(message) in signin view
     func sendAlert(title: String, message: String, btnTxt: String, provider: String?) {

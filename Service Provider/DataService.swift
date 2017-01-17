@@ -18,12 +18,16 @@ class DataService {
     
     private var _REF_BASE = DB_BASE
     private var _REF_USERS = DB_BASE.child("users")
+    private var _REF_SERVICEPROVIDERS = DB_BASE.child("serviceProviders")
     
     var REF_BASE : FIRDatabaseReference {
         return _REF_BASE
     }
     var REF_USERS : FIRDatabaseReference {
         return _REF_USERS
+    }
+    var REF_SERVICEPROVIDERS : FIRDatabaseReference {
+        return _REF_SERVICEPROVIDERS
     }
     
     var REF_USER_CURRENT : FIRDatabaseReference {
@@ -38,6 +42,9 @@ class DataService {
             if snapshot.hasChild(uid) {
                 self.REF_USERS.child(uid).updateChildValues(userData)
             } else {
+                let strDate = NSDate().timeIntervalSince1970
+                //MARK: ADD ServiceProvider init to user false
+                self.REF_SERVICEPROVIDERS.child(uid).updateChildValues(["createdDate": "nil", "modifiedDate": "nil", "active": false, "activationDate": "nil" ])
                 
                 // MARK: TimeStamp to customized time format
                 //let unixTimestamp = 1484277549.329164
@@ -50,7 +57,6 @@ class DataService {
                 //let strDate = dateFormatter.string(from: date as Date)
                 
                 // MARK: Generating Unix TimeStamp
-                let strDate = NSDate().timeIntervalSince1970
                 
                 if let provider = userData["provider"] {
                 
