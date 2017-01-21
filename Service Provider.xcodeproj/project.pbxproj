@@ -16,6 +16,7 @@
 		9F2DF3181E0E58740020BB39 /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2DF3171E0E58740020BB39 /* FancyBtn.swift */; };
 		9F2DF3201E0EB6B90020BB39 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2DF31F1E0EB6B90020BB39 /* SignInVC.swift */; };
 		9F56B9E31E16314F00A4B111 /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F56B9E21E16314F00A4B111 /* RoundBtn.swift */; };
+		9F5CB7F21E31C401006BA2A2 /* Step2VCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F5CB7F11E31C401006BA2A2 /* Step2VCViewController.swift */; };
 		9F83BAF71E12295E00833412 /* FancyFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F83BAF61E12295E00833412 /* FancyFields.swift */; };
 		9FA4075E1E0E3DDF00892DE1 /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */; };
 		9FA407611E0E3E4400892DE1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA407601E0E3E4400892DE1 /* Constants.swift */; };
@@ -25,6 +26,7 @@
 		9FE441001E28F19C0040860C /* SettingsLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE440FF1E28F19C0040860C /* SettingsLauncher.swift */; };
 		9FE441021E2902870040860C /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE441011E2902870040860C /* SettingCell.swift */; };
 		9FE441041E2C99F30040860C /* ForkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE441031E2C99F20040860C /* ForkVC.swift */; };
+		9FE441081E2DE2CD0040860C /* TutorialWelcomePVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE441071E2DE2CD0040860C /* TutorialWelcomePVC.swift */; };
 		DAA39C4ABA94608614B74C9D /* Pods_Service_Provider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350E7580D42EFD29940C2475 /* Pods_Service_Provider.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,7 @@
 		9F2DF3171E0E58740020BB39 /* FancyBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyBtn.swift; sourceTree = "<group>"; };
 		9F2DF31F1E0EB6B90020BB39 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		9F56B9E21E16314F00A4B111 /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundBtn.swift; sourceTree = "<group>"; };
+		9F5CB7F11E31C401006BA2A2 /* Step2VCViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step2VCViewController.swift; sourceTree = "<group>"; };
 		9F83BAF61E12295E00833412 /* FancyFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyFields.swift; sourceTree = "<group>"; };
 		9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
 		9FA407601E0E3E4400892DE1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		9FE440FF1E28F19C0040860C /* SettingsLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLauncher.swift; sourceTree = "<group>"; };
 		9FE441011E2902870040860C /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		9FE441031E2C99F20040860C /* ForkVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForkVC.swift; sourceTree = "<group>"; };
+		9FE441071E2DE2CD0040860C /* TutorialWelcomePVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialWelcomePVC.swift; sourceTree = "<group>"; };
 		E9928A26768D9554263BE79B /* Pods-Service Provider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Service Provider.release.xcconfig"; path = "Pods/Target Support Files/Pods-Service Provider/Pods-Service Provider.release.xcconfig"; sourceTree = "<group>"; };
 		EB0833E457802541E2D5FBB4 /* Pods-Service Provider.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Service Provider.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Service Provider/Pods-Service Provider.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +115,8 @@
 				9FA407581E0E366B00892DE1 /* Controller */,
 				9FA4075F1E0E3E3300892DE1 /* Utils */,
 				9F2D092F1E0E140100345DEE /* AppDelegate.swift */,
+				9F2D09381E0E140100345DEE /* LaunchScreen.storyboard */,
+				9F2D09331E0E140100345DEE /* Main.storyboard */,
 				9F2D09361E0E140100345DEE /* Assets.xcassets */,
 				9F2D09411E0E263800345DEE /* GoogleService-Info.plist */,
 				9F2D093B1E0E140100345DEE /* Info.plist */,
@@ -123,11 +129,13 @@
 		9FA407581E0E366B00892DE1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9FE441071E2DE2CD0040860C /* TutorialWelcomePVC.swift */,
 				9F2D09311E0E140100345DEE /* IntroVC.swift */,
 				9F2DF31F1E0EB6B90020BB39 /* SignInVC.swift */,
 				9FD634671E193E0A002FFE92 /* SosRegisterVC.swift */,
 				9FE440FF1E28F19C0040860C /* SettingsLauncher.swift */,
 				9FE441031E2C99F20040860C /* ForkVC.swift */,
+				9F5CB7F11E31C401006BA2A2 /* Step2VCViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -135,8 +143,6 @@
 		9FA407591E0E367200892DE1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9F2D09331E0E140100345DEE /* Main.storyboard */,
-				9F2D09381E0E140100345DEE /* LaunchScreen.storyboard */,
 				9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */,
 				9F2DF3171E0E58740020BB39 /* FancyBtn.swift */,
 				9F83BAF61E12295E00833412 /* FancyFields.swift */,
@@ -297,6 +303,7 @@
 			files = (
 				9F2DF3181E0E58740020BB39 /* FancyBtn.swift in Sources */,
 				9F2D09321E0E140100345DEE /* IntroVC.swift in Sources */,
+				9FE441081E2DE2CD0040860C /* TutorialWelcomePVC.swift in Sources */,
 				9F2DF3201E0EB6B90020BB39 /* SignInVC.swift in Sources */,
 				9F2D09301E0E140100345DEE /* AppDelegate.swift in Sources */,
 				9F83BAF71E12295E00833412 /* FancyFields.swift in Sources */,
@@ -306,6 +313,7 @@
 				9FE441041E2C99F30040860C /* ForkVC.swift in Sources */,
 				9F56B9E31E16314F00A4B111 /* RoundBtn.swift in Sources */,
 				9FE441001E28F19C0040860C /* SettingsLauncher.swift in Sources */,
+				9F5CB7F21E31C401006BA2A2 /* Step2VCViewController.swift in Sources */,
 				9FA4075E1E0E3DDF00892DE1 /* FancyView.swift in Sources */,
 				9FA407611E0E3E4400892DE1 /* Constants.swift in Sources */,
 				9FD634681E193E0A002FFE92 /* SosRegisterVC.swift in Sources */,

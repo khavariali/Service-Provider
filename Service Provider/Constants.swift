@@ -16,5 +16,4 @@ let signInVC = storyBoard.instantiateViewController(withIdentifier: "SignInVC") 
 let sosRegisterVC = storyBoard.instantiateViewController(withIdentifier: "SosRegisterVC") as! SosRegisterVC
 let forkVC = storyBoard.instantiateViewController(withIdentifier: "ForkVC") as! ForkVC
 
-
 let KEY_UID = "uid"
