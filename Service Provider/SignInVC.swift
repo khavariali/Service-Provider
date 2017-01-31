@@ -18,9 +18,39 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
     
     @IBOutlet var emailTxtFld: FancyFields!
     @IBOutlet var passwordTxtFld: FancyFields!
+    var activitySpin: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //MARK: Goto ForkVC, Already logedin
+        //TODO: Here I have to check whether Database has this key in its db or not,might db is clean and from before this iphone has this key, so if we find db and key not match we have to delete this key from the device.
+        
+        if let uid = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            
+            //MARK: ACTIVITY INDICATOR VIEW
+            activitySpin.center = self.view.center
+            activitySpin.hidesWhenStopped = true
+            activitySpin.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+            view.addSubview(activitySpin)
+            activitySpin.startAnimating()
+            UIApplication.shared.beginIgnoringInteractionEvents()
+            
+            DataService.ds.keyChainExamDbUser(uid: uid, completionHandler: { (success) -> Void in
+                print("***REZA***\(success)")
+                if success {
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                    self.activitySpin.stopAnimating()
+                    print("***REZA***You loged in before so app will directly go to the main page instead of sign in")
+                    self.gotoForkVC()
+                } else {
+                    let removeKeyFromDevice = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                    self.activitySpin.stopAnimating()
+                    print("***REZA***User not match with db!!!!\(removeKeyFromDevice)")
+                }
+            })
+        }
         
         emailTxtFld.delegate = self
         passwordTxtFld.delegate = self
@@ -35,13 +65,6 @@ class SignInVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate, GIDS
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //MARK: Goto ForkVC, Already logedin
-//        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
-//            print("***REZA***You loged in before so app will directly go to the main page instead of sign in")
-//            gotoForkVC()
-//        }
-        
         
         // MARK: Hide back btn on navigation controller
         

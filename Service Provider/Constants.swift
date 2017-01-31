@@ -15,5 +15,7 @@ let storyBoard = UIStoryboard(name: "Main", bundle: nil)
 let signInVC = storyBoard.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
 let sosRegisterVC = storyBoard.instantiateViewController(withIdentifier: "SosRegisterVC") as! SosRegisterVC
 let forkVC = storyBoard.instantiateViewController(withIdentifier: "ForkVC") as! ForkVC
+let userProfileVC = storyBoard.instantiateViewController(withIdentifier: "UserProfileVC") as! UserProfileVC
+
 
 let KEY_UID = "uid"

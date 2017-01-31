@@ -41,7 +41,7 @@ class TutorialWelcomePVC: UIPageViewController, UIPageViewControllerDelegate, UI
             if view is UIScrollView {
                 view.frame = UIScreen.main.bounds
             } else if view is UIPageControl {
-                view.backgroundColor = UIColor.lightGray
+//                view.backgroundColor = UIColor.lightGray
                 view.frame = CGRect(x: 0, y: view.frame.minY - 50, width: view.frame.size.width, height: view.frame.size.height)
                 
             }

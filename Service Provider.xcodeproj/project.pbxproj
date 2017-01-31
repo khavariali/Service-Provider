@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F15AB2E1E39A87F004322B7 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15AB2D1E39A87F004322B7 /* UserProfile.swift */; };
 		9F2D09301E0E140100345DEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2D092F1E0E140100345DEE /* AppDelegate.swift */; };
 		9F2D09321E0E140100345DEE /* IntroVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2D09311E0E140100345DEE /* IntroVC.swift */; };
 		9F2D09351E0E140100345DEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F2D09331E0E140100345DEE /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 		9F83BAF71E12295E00833412 /* FancyFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F83BAF61E12295E00833412 /* FancyFields.swift */; };
 		9FA4075E1E0E3DDF00892DE1 /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */; };
 		9FA407611E0E3E4400892DE1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA407601E0E3E4400892DE1 /* Constants.swift */; };
+		9FD1F2C01E3F243000462B88 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD1F2BF1E3F243000462B88 /* UserProfileVC.swift */; };
 		9FD634661E18B286002FFE92 /* GsignInHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FD634651E18B286002FFE92 /* GsignInHeader.m */; };
 		9FD634681E193E0A002FFE92 /* SosRegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD634671E193E0A002FFE92 /* SosRegisterVC.swift */; };
 		9FE440FE1E253E010040860C /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE440FD1E253E010040860C /* DataService.swift */; };
@@ -32,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		350E7580D42EFD29940C2475 /* Pods_Service_Provider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Service_Provider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F15AB2D1E39A87F004322B7 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		9F2D092C1E0E140100345DEE /* Service Provider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Service Provider.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2D092F1E0E140100345DEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F2D09311E0E140100345DEE /* IntroVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroVC.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		9F83BAF61E12295E00833412 /* FancyFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyFields.swift; sourceTree = "<group>"; };
 		9FA4075D1E0E3DDF00892DE1 /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
 		9FA407601E0E3E4400892DE1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9FD1F2BF1E3F243000462B88 /* UserProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		9FD634641E18B285002FFE92 /* Service Provider-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Service Provider-Bridging-Header.h"; sourceTree = "<group>"; };
 		9FD634651E18B286002FFE92 /* GsignInHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GsignInHeader.m; sourceTree = "<group>"; };
 		9FD634671E193E0A002FFE92 /* SosRegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SosRegisterVC.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 				9FE440FF1E28F19C0040860C /* SettingsLauncher.swift */,
 				9FE441031E2C99F20040860C /* ForkVC.swift */,
 				9F5CB7F11E31C401006BA2A2 /* Step2VCViewController.swift */,
+				9FD1F2BF1E3F243000462B88 /* UserProfileVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 		9FA4075A1E0E367900892DE1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9F15AB2D1E39A87F004322B7 /* UserProfile.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -306,6 +312,7 @@
 				9FE441081E2DE2CD0040860C /* TutorialWelcomePVC.swift in Sources */,
 				9F2DF3201E0EB6B90020BB39 /* SignInVC.swift in Sources */,
 				9F2D09301E0E140100345DEE /* AppDelegate.swift in Sources */,
+				9FD1F2C01E3F243000462B88 /* UserProfileVC.swift in Sources */,
 				9F83BAF71E12295E00833412 /* FancyFields.swift in Sources */,
 				9FE440FE1E253E010040860C /* DataService.swift in Sources */,
 				9FD634661E18B286002FFE92 /* GsignInHeader.m in Sources */,
@@ -317,6 +324,7 @@
 				9FA4075E1E0E3DDF00892DE1 /* FancyView.swift in Sources */,
 				9FA407611E0E3E4400892DE1 /* Constants.swift in Sources */,
 				9FD634681E193E0A002FFE92 /* SosRegisterVC.swift in Sources */,
+				9F15AB2E1E39A87F004322B7 /* UserProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

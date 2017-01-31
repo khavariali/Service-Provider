@@ -42,9 +42,16 @@ class DataService {
             if snapshot.hasChild(uid) {
                 self.REF_USERS.child(uid).updateChildValues(userData)
             } else {
+                // MARK: Generating Unix TimeStamp
                 let strDate = NSDate().timeIntervalSince1970
-                //MARK: ADD ServiceProvider init to user false
-                self.REF_SERVICEPROVIDERS.child(uid).updateChildValues(["createdDate": "nil", "modifiedDate": "nil", "active": false, "activationDate": "nil" ])
+                
+                var emailAdd: String = "nil"
+                if let email = FIRAuth.auth()?.currentUser?.email {
+                    emailAdd = email
+                }
+                //MARK: MODIFIED DATE ARRAY FOR FUTURE
+                //let modifiedDate = ["date0": "nil"]
+                self.REF_SERVICEPROVIDERS.child(uid).updateChildValues(["createdDate": "nil", "modifiedDate": "nil", "active": false, "activationDate": "nil", "photo":"nil" ])
                 
                 // MARK: TimeStamp to customized time format
                 //let unixTimestamp = 1484277549.329164
@@ -56,14 +63,62 @@ class DataService {
                 //dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
                 //let strDate = dateFormatter.string(from: date as Date)
                 
-                // MARK: Generating Unix TimeStamp
+                
                 
                 if let provider = userData["provider"] {
                 
-                self.REF_USERS.child(uid).updateChildValues(["createdDate": strDate, "provider": provider])
+                self.REF_USERS.child(uid).updateChildValues(["firstName": "nil","lastName": "nil", "createdDate": strDate, "modifiedDate":"nil", "mobileNo": "nil", "emailAddress": emailAdd,"photo":"nil", "provider": provider, "active":false])
                 }
             }
         })
-        
+    }
+    
+    //MARK: CHECK STORED KEYCHAIN UID WITH DB BEFORE LOGIN
+    typealias CompletionHandler = (_ success:Bool) -> Void
+    
+    func keyChainExamDbUser(uid: String,completionHandler: @escaping CompletionHandler) {
+        var flag = false
+        REF_USERS.observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+            if snapshot.hasChild(uid) {
+                print("EXIST")
+                
+                flag = true
+            }
+            completionHandler(flag)
+        })
+    }
+    
+    //MARK: CHECK user has service provider account or not in the beginning of forkVC
+    typealias ProInit = (_ success: NSDictionary) -> Void
+
+    func ServiceProInit(completionHandler: @escaping ProInit) {
+        //var flag = false
+        var resultDic: NSDictionary = [:]
+        if let uid = FIRAuth.auth()?.currentUser?.uid {
+            REF_SERVICEPROVIDERS.child(uid).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+                if let snapshotv = snapshot.value as? NSDictionary {
+                    if let actDate = snapshotv.value(forKey: "activationDate"), let ProStatus = snapshotv.value(forKey: "active") {
+                        
+                        resultDic = ["activationDate":actDate, "active":ProStatus]
+                    }
+                }
+                completionHandler(resultDic)
+            })
+        }
+    }
+    func HireInit(completionHandler:@escaping (Bool) -> ()) {
+        var resultDic = false
+        if let uid = FIRAuth.auth()?.currentUser?.uid {
+            REF_USERS.child(uid).observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
+                if let snapshotv = snapshot.value as? NSDictionary {
+                    if let status = snapshotv.value(forKey: "active") {
+                        if (status as? Bool)! {
+                            resultDic = status as! Bool
+                        }
+                    }
+                }
+                completionHandler(resultDic)
+            })
+        }
     }
 }

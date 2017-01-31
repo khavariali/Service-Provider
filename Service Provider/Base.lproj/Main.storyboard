@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rqd-44-H8x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="rqd-44-H8x">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Tutorial WelcomePVC-->
         <scene sceneID="hFD-yZ-W5U">
             <objects>
-                <pageViewController storyboardIdentifier="TutorialWelcomePVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="4" navigationOrientation="horizontal" spineLocation="none" id="IoN-16-FsA" customClass="TutorialWelcomePVC" customModule="Service_Provider" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController storyboardIdentifier="TutorialWelcomePVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="2" navigationOrientation="horizontal" spineLocation="none" id="IoN-16-FsA" customClass="TutorialWelcomePVC" customModule="Service_Provider" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="8FX-yd-puu"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tU0-21-x2B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -240,26 +240,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yie-Jm-B80">
-                                <rect key="frame" x="110" y="338" width="154" height="68"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forkVC" translatesAutoresizingMaskIntoConstraints="NO" id="5u1-A7-pJt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K91-4I-gak" customClass="FancyBtn" customModule="Service_Provider" customModuleProvider="target">
+                                <rect key="frame" x="90" y="428" width="195" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="I need a Service"/>
+                                <color key="backgroundColor" red="1" green="0.43137254901960786" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                <state key="normal" title="Service Provider Panel">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K91-4I-gak">
-                                <rect key="frame" x="110" y="139" width="154" height="68"/>
+                            <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yie-Jm-B80" customClass="FancyBtn" customModule="Service_Provider" customModuleProvider="target">
+                                <rect key="frame" x="90" y="170" width="195" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Service Provider Panel"/>
+                                <color key="backgroundColor" red="1" green="0.43137254901960786" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                <state key="normal" title="Hire a service provider">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Blj-XV-9mO">
+                                <rect key="frame" x="53" y="504" width="269" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdq-xU-Vwh">
+                                <rect key="frame" x="53" y="97" width="269" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b0Q-1H-kmU" firstAttribute="top" secondItem="5u1-A7-pJt" secondAttribute="bottom" id="78R-n5-RER"/>
+                            <constraint firstItem="5u1-A7-pJt" firstAttribute="top" secondItem="kvi-9L-apB" secondAttribute="top" id="DDX-5S-GoE"/>
+                            <constraint firstAttribute="trailing" secondItem="5u1-A7-pJt" secondAttribute="trailing" id="KdM-cp-8Hs"/>
+                            <constraint firstItem="5u1-A7-pJt" firstAttribute="leading" secondItem="kvi-9L-apB" secondAttribute="leading" id="xw5-of-zAB"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="hireLbl" destination="Bdq-xU-Vwh" id="pfe-C9-yax"/>
+                        <outlet property="hireProBtn" destination="yie-Jm-B80" id="Lgz-rq-cU6"/>
                         <outlet property="serviceProBtn" destination="K91-4I-gak" id="KsI-tq-cRD"/>
+                        <outlet property="serviceProLbl" destination="Blj-XV-9mO" id="J3A-hB-O9N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydo-w9-N2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7036" y="-41.829085457271368"/>
+            <point key="canvasLocation" x="5656.8000000000002" y="623.83808095952031"/>
+        </scene>
+        <!--User ProfileVC-->
+        <scene sceneID="bFg-oh-Ova">
+            <objects>
+                <viewController storyboardIdentifier="UserProfileVC" id="Mny-Iq-ipE" customClass="UserProfileVC" customModule="Service_Provider" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QhA-b2-xlv"/>
+                        <viewControllerLayoutGuide type="bottom" id="wqk-Fq-t4t"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u7a-3p-GWo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l15-Yg-0gi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6391" y="624"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="no5-lq-eva">
@@ -277,7 +329,7 @@
                                 <rect key="frame" x="49" y="74" width="276" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="STEP 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EMK-cV-NXS">
@@ -298,7 +350,7 @@
                                 <rect key="frame" x="49" y="222" width="276" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SOSStep1" translatesAutoresizingMaskIntoConstraints="NO" id="MI9-2v-TBV">
@@ -306,7 +358,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.9882352941176471" green="0.89411764705882346" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dxt-Ar-Z4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -327,7 +379,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YD-ry-mNL">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.84705882349999995" green="0.1058823529" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.0" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="8Mz-xl-bPH"/>
                                 </constraints>
@@ -372,7 +424,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.23582181334495544" green="0.92005366086959839" blue="0.87366056442260742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="9YD-ry-mNL" firstAttribute="leading" secondItem="dYe-PG-bCt" secondAttribute="leading" id="Rad-tz-nk2"/>
                             <constraint firstAttribute="trailing" secondItem="9YD-ry-mNL" secondAttribute="trailing" id="vbx-qz-CvV"/>
@@ -408,6 +460,7 @@
         <image name="SignInRegister" width="375" height="667"/>
         <image name="closed-lock" width="34" height="50"/>
         <image name="facebook" width="440" height="68"/>
+        <image name="forkVC" width="375" height="667"/>
         <image name="google" width="440" height="68"/>
         <image name="mail" width="50" height="36"/>
         <image name="nav_more_icon" width="24" height="24"/>
